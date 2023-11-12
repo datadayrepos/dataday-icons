@@ -1,0 +1,55 @@
+{
+  "name": "dataday-vuevite",
+  "type": "module",
+  "version": "0.0.1-beta.1",
+  "private": false,
+  "license": "Propriatory",
+  "exports": {
+
+  },
+  "main": "main.js",
+
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview",
+    "lint": "eslint --cache .",
+    "lint:fix": "eslint . --fix",
+    "typecheckVue": "vue-tsc --noEmit",
+    "publish": "npm publish --access public"
+  },
+  "peerDependencies": {
+    "vue": "3.3.4"
+  },
+
+  "devDependencies": {
+    "@datadayrepos/eslint-config": "^1.0.1-beta.11",
+    "@datadayrepos/eslint-plugin-datadayrepos": "1.0.0-Beta12",
+    "@datadayrepos/ni": "^0.21.8",
+    "@types/node": "20.9.0",
+    "@vitejs/plugin-vue": "4.4.1",
+    "eslint": "^8.51.0",
+    "eslint-plugin-sort-keys": "^2.3.5",
+    "lint-staged": "^14.0.1",
+    "pnpm": "^8.10.2",
+    "typescript": "5.2.2",
+    "vite": "4.5.0",
+    "vue": "3.3.4",
+    "vue-tsc": "1.8.22"
+
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "vite",
+        "react",
+        "react-dom"
+      ]
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx,vue,md}": [
+      "eslint --cache --fix"
+    ]
+  }
+}
