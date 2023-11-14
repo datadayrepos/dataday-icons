@@ -1,7 +1,7 @@
 # Flexible vue icon library
 The primary purpose is to support both dynamic and static import syntaxes for consumers of datadayrepos - and to provide a consistent base icon library.
 
-We also encopurage use of icon imports through the vite tooling system and 'unplugins' - but those will not resolve dynamic (variable based) imports which are semtimes usefull and the original rationale for this library.
+We also encopurage use of icon imports through the vite tooling system and 'unplugins' - but those will not resolve dynamic (variable based) imports which are sometimes usefull and the original rationale for this library.
 
 Especially supporting dynamic async imports turned out to be quite difficult with existing libraries.
 
