@@ -1,7 +1,0 @@
-{
-  "./vue/IconCaretDown": "./dist/IconCaretDown.js",
-  "./vue/IconCaretUp": "./dist/IconCaretUp.js",
-  "./vue/IconClose": "./dist/IconClose.js",
-  "./vue/IconPlus": "./dist/IconPlus.js",
-  "./vue/IconQuestion": "./dist/IconQuestion.js"
-}

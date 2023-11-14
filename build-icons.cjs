@@ -1,54 +1,74 @@
+// build script that should be run for all new svg files or when republishing the package
 const fs = require('node:fs')
 const path = require('node:path')
 
 const svgDir = path.join(__dirname, 'src/svg')
 const vueDir = path.join(__dirname, 'src/vue')
-const outputDir = 'dist' // Assuming our build output directory is 'dist'
 
 // Ensure the Vue directory exists
 if (!fs.existsSync(vueDir))
   fs.mkdirSync(vueDir, { recursive: true })
 
-// Function to generate exports.json
-// Function to generate exports.json
-function generateExportsJson() {
-  const exportsObj = {}
+// We create a named directory for each svg file, and creates a index.vue file inside
+fs.readdirSync(svgDir).forEach((file) => {
+  if (path.extname(file) === '.svg') {
+    const baseName = path.basename(file, '.svg')
+    const svgFilePath = path.join(svgDir, file)
 
-  fs.readdirSync(vueDir).forEach((file) => {
-    if (path.extname(file) === '.vue') {
-      const componentName = path.basename(file, '.vue')
-      // Point to the compiled JavaScript file in the output directory
-      exportsObj[`./vue/${componentName}`] = `./${outputDir}/${componentName}.js`
-    }
-  })
+    // Create a directory for each component in the vueDir
+    const componentVueDir = path.join(vueDir, baseName)
+    if (!fs.existsSync(componentVueDir))
+      fs.mkdirSync(componentVueDir, { recursive: true })
 
-  fs.writeFileSync('exports.json', JSON.stringify(exportsObj, null, 2))
-  // eslint-disable-next-line no-console
-  console.log('Generated exports.json')
-}
+    const vueFilePath = path.join(componentVueDir, 'index.vue')
 
-fs.readdir(svgDir, (err, files) => {
-  if (err) {
-    console.error('Error reading SVG directory:', err)
-    return
+    // Read SVG content and write the Vue file
+    const svgContent = fs.readFileSync(svgFilePath, 'utf8')
+    const vueContent = `<template>\n${svgContent}\n</template>\nx`
+    fs.writeFileSync(vueFilePath, vueContent) //  pnpm typecheckVue
+
+    // eslint-disable-next-line no-console
+    console.log(`Created Vue file: ${vueFilePath}`)
+  }
+})
+
+// Generate index file
+let indexContent = ''
+fs.readdirSync(vueDir).forEach((dir) => {
+  if (fs.statSync(path.join(vueDir, dir)).isDirectory())
+    indexContent += `export { default as ${dir} } from './${dir}/index.vue';\n`
+})
+fs.writeFileSync(path.join(vueDir, 'index.ts'), indexContent)
+// eslint-disable-next-line no-console
+console.log('Generated index.ts')
+
+updatePackageJsonExports()
+
+function updatePackageJsonExports() {
+  const packageJsonPath = path.join(__dirname, 'package.json')
+  const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'))
+
+  // Initialize the exports object
+  const exports = {
+    '.': {
+      module: './dist/index.js',
+      types: './dist/index.d.ts',
+    },
   }
 
-  files.forEach((file) => {
-    if (path.extname(file) === '.svg') {
-      const svgFilePath = path.join(svgDir, file)
-      const vueFilePath = path.join(vueDir, file.replace('.svg', '.vue'))
-
-      // Skip if Vue file already exists
-      if (!fs.existsSync(vueFilePath)) {
-        const svgContent = fs.readFileSync(svgFilePath, 'utf8')
-        const vueContent = `<template>\n${svgContent}\n</template>\n`
-
-        fs.writeFileSync(vueFilePath, vueContent)
-        // eslint-disable-next-line no-console
-        console.log(`Created Vue file: ${vueFilePath}`)
+  // Populate exports for each component
+  fs.readdirSync(vueDir).forEach((dir) => {
+    if (fs.statSync(path.join(vueDir, dir)).isDirectory()) {
+      exports[`./${dir}`] = {
+        module: `./dist/${dir}/index.js`,
+        types: `./dist/${dir}/index.vue.d.ts`,
       }
     }
   })
 
-  generateExportsJson() // Call the function to generate exports.json
-})
+  // Update package.json
+  packageJson.exports = exports
+  fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2))
+  // eslint-disable-next-line no-console
+  console.log('Updated package.json exports')
+}

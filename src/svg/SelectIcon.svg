@@ -1,0 +1,21 @@
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+    role="img"
+    width="1em"
+    height="1em"
+    preserveAspectRatio="xMidYMid meet"
+    viewBox="0 0 24 24"
+  >
+    <rect x="0" y="0" width="24" height="24" fill="none" stroke="none" />
+    <g fill="none">
+      <path
+        d="M6 9.657l1.414 1.414l4.243-4.243l4.242 4.243l1.415-1.414L11.657 4L6 9.657z"
+        fill="currentColor"
+      />
+      <path
+        d="M6 14.443l1.414-1.414l4.243 4.243l4.242-4.243l1.415 1.414l-5.657 5.657L6 14.443z"
+        fill="currentColor"
+      />
+    </g>
+  </svg>

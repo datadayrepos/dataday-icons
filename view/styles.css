@@ -1,0 +1,31 @@
+body {
+    background-color: #1e1e1e;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td {
+    padding: 10px;
+    border: 1px solid #333;
+
+}
+
+button {
+    cursor: pointer;
+    background-color: rgb(162, 162, 162);
+
+}
+
+.icon-cell {
+    width: 24px;
+    height: 24px;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }

@@ -4,23 +4,38 @@
     "jsx": "preserve",
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "useDefineForClassFields": true,
+    "baseUrl": ".",
+    "rootDir": "./src/vue",
     "module": "ESNext",
-
     /* Bundler mode */
-    "moduleResolution": "bundler",
+    "moduleResolution": "Node",
+    "paths": {
+      "@/*": ["src/*"]
+    },
     "resolveJsonModule": true,
-    "types": ["node"],
-    "allowImportingTsExtensions": true,
-
+    "types": ["node", "vite/client"],
+    // "allowImportingTsExtensions": true,
     /* Linting */
     "strict": true,
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noEmit": true,
+    "declaration": true,
+    "declarationDir": "./dist",
+    "outDir": "./dist", // Set the root directory for source files
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "isolatedModules": true,
     "skipLibCheck": true
+
   },
-  "references": [{ "path": "./tsconfig.node.json" }],
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
+  // "references": [{ "path": "./tsconfig.node.json" }],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "exclude": [
+    "svg",
+    "build-icons.cjs",
+    "node_modules", // Exclude the node_modules directory
+    "dist", // Exclude the dist directory, if it's our output directory
+    "tests" // Exclude a tests directory, if we have one
+  ]
 }

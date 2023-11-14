@@ -1,0 +1,22 @@
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+    role="img"
+    width="1em"
+    height="1em"
+    preserveAspectRatio="xMidYMid meet"
+    viewBox="0 0 21 21"
+  >
+    <rect x="0" y="0" width="21" height="21" fill="none" stroke="none" />
+    <g
+      fill="none"
+      fill-rule="evenodd"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="M14.5 7.5l-3.978-4l-4.022 4" />
+      <path d="M10.522 3.521V15.5" />
+      <path d="M3.5 12v4.5a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V12" />
+    </g>
+  </svg>
