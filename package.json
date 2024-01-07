@@ -1,9 +1,16 @@
 {
   "name": "@datadayrepos/icons",
   "type": "module",
-  "version": "0.0.1-beta.20",
+  "version": "0.0.1-beta.21",
   "private": false,
-  "license": "Proprietary",
+  "packageManager": "pnpm@8.9.0",
+  "description": "Uix icon library",
+  "author": "datadayrepos",
+  "license": "Apache 2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/datadayrepos/dataday-icons.git"
+  },
   "exports": {
     ".": {
       "module": "./dist/index.js",

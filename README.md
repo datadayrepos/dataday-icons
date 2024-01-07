@@ -12,7 +12,7 @@ Typed.
 ## Import in new project
 This will add the latest version of the package to your project's package.json and install it in the node_modules directory.
 ```bash
-pnpm add  @datadayrepos/icons@latest
+pnpm add @datadayrepos/icons@latest
 # or
 npm i @datadayrepos/icons@latest
 ```
@@ -57,11 +57,6 @@ export function iconResolver(iconName: string) {
 import { iconResolver } from '../iconresolver'
 
 const Whatever = iconResolver('IconClose')
-```
-
-```bash
-# this creates vue fiels from the svg fiels. the vue dir is not commtted to git. 
- pnpm  build-icons
 ```
 
 ## Web view
@@ -110,13 +105,13 @@ Build:
 
 ```bash
 pnpm build
-# runs vue file build without building dist
+# this creates vue files from the svg files. the vue dir is not commtted to git. 
 pnpm build-icons
 ```
 
 Dups:
 - Checks src/svg folder for duplicate svg files.
-- Dups are simply console logged
+- Dups are simply console logged for manual check and delete
 
 ```bash
 pnpm dedupeSvg
