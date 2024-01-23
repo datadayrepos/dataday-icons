@@ -1,7 +1,7 @@
 {
   "name": "@datadayrepos/icons",
   "type": "module",
-  "version": "0.0.1-beta.21",
+  "version": "0.0.1-beta.22",
   "private": false,
   "packageManager": "pnpm@8.9.0",
   "description": "Uix icon library",
@@ -725,6 +725,9 @@
       "types": "./dist/ZoomInIcon/index.vue.d.ts"
     }
   },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
