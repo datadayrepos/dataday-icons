@@ -1,7 +1,7 @@
 {
   "name": "@datadayrepos/icons",
   "type": "module",
-  "version": "0.0.1-beta.22",
+  "version": "0.0.1-beta.23",
   "private": false,
   "packageManager": "pnpm@8.9.0",
   "description": "Uix icon library",
@@ -348,6 +348,10 @@
       "module": "./dist/FootnoteIcon/index.js",
       "types": "./dist/FootnoteIcon/index.vue.d.ts"
     },
+    "./ForgotPassWordIcon": {
+      "module": "./dist/ForgotPassWordIcon/index.js",
+      "types": "./dist/ForgotPassWordIcon/index.vue.d.ts"
+    },
     "./FormFlowIcon": {
       "module": "./dist/FormFlowIcon/index.js",
       "types": "./dist/FormFlowIcon/index.vue.d.ts"
@@ -448,6 +452,10 @@
       "module": "./dist/LockedIcon/index.js",
       "types": "./dist/LockedIcon/index.vue.d.ts"
     },
+    "./LoginIcon": {
+      "module": "./dist/LoginIcon/index.js",
+      "types": "./dist/LoginIcon/index.vue.d.ts"
+    },
     "./MapIcon": {
       "module": "./dist/MapIcon/index.js",
       "types": "./dist/MapIcon/index.vue.d.ts"
@@ -492,6 +500,10 @@
       "module": "./dist/NumbersymbolIcon/index.js",
       "types": "./dist/NumbersymbolIcon/index.vue.d.ts"
     },
+    "./OpenIdIcon": {
+      "module": "./dist/OpenIdIcon/index.js",
+      "types": "./dist/OpenIdIcon/index.vue.d.ts"
+    },
     "./PaletteIcon": {
       "module": "./dist/PaletteIcon/index.js",
       "types": "./dist/PaletteIcon/index.vue.d.ts"
@@ -499,6 +511,14 @@
     "./PassPortIcon": {
       "module": "./dist/PassPortIcon/index.js",
       "types": "./dist/PassPortIcon/index.vue.d.ts"
+    },
+    "./PasskeyIcon": {
+      "module": "./dist/PasskeyIcon/index.js",
+      "types": "./dist/PasskeyIcon/index.vue.d.ts"
+    },
+    "./PasswordIcon": {
+      "module": "./dist/PasswordIcon/index.js",
+      "types": "./dist/PasswordIcon/index.vue.d.ts"
     },
     "./PasteIcon": {
       "module": "./dist/PasteIcon/index.js",
