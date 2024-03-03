@@ -105,7 +105,7 @@ Build:
 
 ```bash
 pnpm build
-# this creates vue files from the svg files. the vue dir is not commtted to git. 
+# this creates vue files from the svg files. the vue dir is not committed to git. 
 pnpm build-icons
 ```
 

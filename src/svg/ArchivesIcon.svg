@@ -3,6 +3,10 @@
     fill="none"
     viewBox="0 0 24 24"
     stroke="currentColor"
+    aria-hidden="true"
+    role="img"
+    width="1em"
+    height="1em"
   >
     <path
       stroke-linecap="round"

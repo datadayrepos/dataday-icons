@@ -1,7 +1,7 @@
 {
   "name": "@datadayrepos/icons",
   "type": "module",
-  "version": "0.0.1-beta.23",
+  "version": "0.0.1-beta.24",
   "private": false,
   "packageManager": "pnpm@8.9.0",
   "description": "Uix icon library",
@@ -379,6 +379,10 @@
     "./GoogleBrandIcon": {
       "module": "./dist/GoogleBrandIcon/index.js",
       "types": "./dist/GoogleBrandIcon/index.vue.d.ts"
+    },
+    "./GrabIcon": {
+      "module": "./dist/GrabIcon/index.js",
+      "types": "./dist/GrabIcon/index.vue.d.ts"
     },
     "./GridBuildIcon": {
       "module": "./dist/GridBuildIcon/index.js",
