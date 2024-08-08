@@ -1,7 +1,7 @@
 {
   "name": "@datadayrepos/icons",
   "type": "module",
-  "version": "0.0.1-beta.24",
+  "version": "0.0.1-beta.26",
   "private": false,
   "packageManager": "pnpm@8.9.0",
   "description": "Uix icon library",
@@ -672,9 +672,21 @@
       "module": "./dist/TagsIcon/index.js",
       "types": "./dist/TagsIcon/index.vue.d.ts"
     },
+    "./TeamAddFilledIcon": {
+      "module": "./dist/TeamAddFilledIcon/index.js",
+      "types": "./dist/TeamAddFilledIcon/index.vue.d.ts"
+    },
+    "./TeamAddOutlineIcon": {
+      "module": "./dist/TeamAddOutlineIcon/index.js",
+      "types": "./dist/TeamAddOutlineIcon/index.vue.d.ts"
+    },
     "./TeamIcon": {
       "module": "./dist/TeamIcon/index.js",
       "types": "./dist/TeamIcon/index.vue.d.ts"
+    },
+    "./TeamOutlineIcon": {
+      "module": "./dist/TeamOutlineIcon/index.js",
+      "types": "./dist/TeamOutlineIcon/index.vue.d.ts"
     },
     "./TextIcon": {
       "module": "./dist/TextIcon/index.js",
@@ -727,6 +739,18 @@
     "./UserIcon": {
       "module": "./dist/UserIcon/index.js",
       "types": "./dist/UserIcon/index.vue.d.ts"
+    },
+    "./UserKeyIcon": {
+      "module": "./dist/UserKeyIcon/index.js",
+      "types": "./dist/UserKeyIcon/index.vue.d.ts"
+    },
+    "./UserKeyOutlineIcon": {
+      "module": "./dist/UserKeyOutlineIcon/index.js",
+      "types": "./dist/UserKeyOutlineIcon/index.vue.d.ts"
+    },
+    "./UserOutlineIcon": {
+      "module": "./dist/UserOutlineIcon/index.js",
+      "types": "./dist/UserOutlineIcon/index.vue.d.ts"
     },
     "./VideoIcon": {
       "module": "./dist/VideoIcon/index.js",

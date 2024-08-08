@@ -107,6 +107,8 @@ Build:
 pnpm build
 # this creates vue files from the svg files. the vue dir is not committed to git. 
 pnpm build-icons
+
+pnpm pub
 ```
 
 Dups:
