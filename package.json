@@ -1,7 +1,7 @@
 {
   "name": "@datadayrepos/icons",
   "type": "module",
-  "version": "0.0.1-beta.26",
+  "version": "0.0.1-beta.27",
   "private": false,
   "packageManager": "pnpm@8.9.0",
   "description": "Uix icon library",
@@ -15,6 +15,46 @@
     ".": {
       "module": "./dist/index.js",
       "types": "./dist/index.d.ts"
+    },
+    "./AccountAddFilledIcon": {
+      "module": "./dist/AccountAddFilledIcon/index.js",
+      "types": "./dist/AccountAddFilledIcon/index.vue.d.ts"
+    },
+    "./AccountAddOutlineIcon": {
+      "module": "./dist/AccountAddOutlineIcon/index.js",
+      "types": "./dist/AccountAddOutlineIcon/index.vue.d.ts"
+    },
+    "./AccountGroupFilledIcon": {
+      "module": "./dist/AccountGroupFilledIcon/index.js",
+      "types": "./dist/AccountGroupFilledIcon/index.vue.d.ts"
+    },
+    "./AccountGroupOutlineIcon": {
+      "module": "./dist/AccountGroupOutlineIcon/index.js",
+      "types": "./dist/AccountGroupOutlineIcon/index.vue.d.ts"
+    },
+    "./AccountLockClosedFilledIcon": {
+      "module": "./dist/AccountLockClosedFilledIcon/index.js",
+      "types": "./dist/AccountLockClosedFilledIcon/index.vue.d.ts"
+    },
+    "./AccountLockClosedOutlineIcon": {
+      "module": "./dist/AccountLockClosedOutlineIcon/index.js",
+      "types": "./dist/AccountLockClosedOutlineIcon/index.vue.d.ts"
+    },
+    "./AccountLockOpenFilledIcon": {
+      "module": "./dist/AccountLockOpenFilledIcon/index.js",
+      "types": "./dist/AccountLockOpenFilledIcon/index.vue.d.ts"
+    },
+    "./AccountLockOpenOutlineIcon": {
+      "module": "./dist/AccountLockOpenOutlineIcon/index.js",
+      "types": "./dist/AccountLockOpenOutlineIcon/index.vue.d.ts"
+    },
+    "./AccountUserFilledIcon": {
+      "module": "./dist/AccountUserFilledIcon/index.js",
+      "types": "./dist/AccountUserFilledIcon/index.vue.d.ts"
+    },
+    "./AccountUserOutlineIcon": {
+      "module": "./dist/AccountUserOutlineIcon/index.js",
+      "types": "./dist/AccountUserOutlineIcon/index.vue.d.ts"
     },
     "./AddToQueIcon": {
       "module": "./dist/AddToQueIcon/index.js",
@@ -292,6 +332,22 @@
       "module": "./dist/EmailIcon/index.js",
       "types": "./dist/EmailIcon/index.vue.d.ts"
     },
+    "./EncryptedOffFilledIcon": {
+      "module": "./dist/EncryptedOffFilledIcon/index.js",
+      "types": "./dist/EncryptedOffFilledIcon/index.vue.d.ts"
+    },
+    "./EncryptedOffOutlineIcon": {
+      "module": "./dist/EncryptedOffOutlineIcon/index.js",
+      "types": "./dist/EncryptedOffOutlineIcon/index.vue.d.ts"
+    },
+    "./EncryptedOnFilledIcon": {
+      "module": "./dist/EncryptedOnFilledIcon/index.js",
+      "types": "./dist/EncryptedOnFilledIcon/index.vue.d.ts"
+    },
+    "./EncryptedOnOutlineIcon": {
+      "module": "./dist/EncryptedOnOutlineIcon/index.js",
+      "types": "./dist/EncryptedOnOutlineIcon/index.vue.d.ts"
+    },
     "./EraserIcon": {
       "module": "./dist/EraserIcon/index.js",
       "types": "./dist/EraserIcon/index.vue.d.ts"
@@ -448,9 +504,25 @@
       "module": "./dist/LoadingIcon/index.js",
       "types": "./dist/LoadingIcon/index.vue.d.ts"
     },
+    "./LockClosedFilled": {
+      "module": "./dist/LockClosedFilled/index.js",
+      "types": "./dist/LockClosedFilled/index.vue.d.ts"
+    },
+    "./LockClosedOutline": {
+      "module": "./dist/LockClosedOutline/index.js",
+      "types": "./dist/LockClosedOutline/index.vue.d.ts"
+    },
     "./LockIcon": {
       "module": "./dist/LockIcon/index.js",
       "types": "./dist/LockIcon/index.vue.d.ts"
+    },
+    "./LockOpenFilledIcon": {
+      "module": "./dist/LockOpenFilledIcon/index.js",
+      "types": "./dist/LockOpenFilledIcon/index.vue.d.ts"
+    },
+    "./LockOpenOutline": {
+      "module": "./dist/LockOpenOutline/index.js",
+      "types": "./dist/LockOpenOutline/index.vue.d.ts"
     },
     "./LockedIcon": {
       "module": "./dist/LockedIcon/index.js",
@@ -711,6 +783,10 @@
     "./TrashIcon": {
       "module": "./dist/TrashIcon/index.js",
       "types": "./dist/TrashIcon/index.vue.d.ts"
+    },
+    "./TwoFactorAuthIcon": {
+      "module": "./dist/TwoFactorAuthIcon/index.js",
+      "types": "./dist/TwoFactorAuthIcon/index.vue.d.ts"
     },
     "./UndoIcon": {
       "module": "./dist/UndoIcon/index.js",

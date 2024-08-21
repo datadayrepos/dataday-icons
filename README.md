@@ -105,10 +105,18 @@ Build:
 
 ```bash
 pnpm build
-# this creates vue files from the svg files. the vue dir is not committed to git. 
+
+# this creates vue files from the svg files. Doesnt run typescript o rbuild
 pnpm build-icons
 
+# MANUALLY update package version before publishing
 pnpm pub
+
+# Commit to git manuallu or by uix
+git add .
+git commit -m "Added icons"
+git push
+
 ```
 
 Dups:
