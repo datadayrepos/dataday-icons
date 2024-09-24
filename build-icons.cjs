@@ -9,7 +9,7 @@ const vueDir = path.join(__dirname, 'src/vue')
 if (!fs.existsSync(vueDir))
   fs.mkdirSync(vueDir, { recursive: true })
 
-// We create a named directory for each svg file, and creates a index.vue file inside
+// Create a directory for each SVG file and an index.vue file inside
 fs.readdirSync(svgDir).forEach((file) => {
   if (path.extname(file) === '.svg') {
     const baseName = path.basename(file, '.svg')
@@ -42,8 +42,41 @@ fs.writeFileSync(path.join(vueDir, 'index.ts'), indexContent)
 // eslint-disable-next-line no-console
 console.log('Generated index.ts')
 
+/*
 updatePackageJsonExports()
 
+function updatePackageJsonExports() {
+  const packageJsonPath = path.join(__dirname, 'package.json')
+  const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'))
+
+  // Initialize the exports object
+  const exports = {
+    '.': {
+      types: './dist/index.d.ts',
+      import: './dist/index.mjs',
+      require: './dist/index.cjs',
+    },
+  }
+  // Update package.json
+  packageJson.exports = exports
+  fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2))
+  // Populate exports for each component
+
+  fs.readdirSync(vueDir).forEach((dir) => {
+    if (fs.statSync(path.join(vueDir, dir)).isDirectory()) {
+      exports[`./${dir}`] = {
+        types: `./dist/${dir}/index.d.ts`,
+        import: `./dist/${dir}/index.mjs`,
+        require: `./dist/${dir}/index.cjs`,
+
+      }
+    }
+  })
+
+  //  console.log('Updated package.json exports')
+}
+*/
+/* DEPRECATED  - legacy this creates a moduler package.son with each file listed
 function updatePackageJsonExports() {
   const packageJsonPath = path.join(__dirname, 'package.json')
   const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'))
@@ -72,3 +105,4 @@ function updatePackageJsonExports() {
   // eslint-disable-next-line no-console
   console.log('Updated package.json exports')
 }
+*/

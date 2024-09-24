@@ -4,14 +4,21 @@ import fs from 'node:fs'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
-const vueDir = path.resolve(__dirname, 'src/vue') // Define the vueDir variable
+// const vueDir = path.resolve(__dirname, 'src/vue') // Define the vueDir variable
 
 export default defineConfig({
   plugins: [vue()],
   build: {
     // Remove the 'lib' section, as we're not building a single bundled library
+    lib: {
+      entry: path.resolve(__dirname, 'src/vue/index.ts'), // Use index.ts as the main entry point
+      name: 'Icons', // The global name of your library in UMD builds (optional)
+      formats: ['es', 'cjs'], // Build both ESM and CommonJS formats
+      fileName: format => `index.${format === 'es' ? 'mjs' : 'cjs'}`,
+    },
     rollupOptions: {
       // Define the input files for individual module building
+      /*
       input: {
         index: path.resolve(__dirname, 'src/vue/index.ts'), // Include index.ts as an entry point
 
@@ -22,10 +29,15 @@ export default defineConfig({
             .map(dir => [dir, `src/vue/${dir}/index.vue`]),
         ),
       },
+      */
       // Explicitly set preserveEntrySignatures to 'strict' or 'allow-extension'
-      preserveEntrySignatures: 'strict',
+      // preserveEntrySignatures: 'strict',
       external: ['vue'],
       output: {
+        globals: {
+          vue: 'Vue',
+        },
+        /*
         // Ensures each component is exported as a separate module
         format: 'esm',
         dir: 'dist',
@@ -39,7 +51,7 @@ export default defineConfig({
         },
         preserveModules: true, // Important for tree-shakability
         preserveModulesRoot: 'src/vue',
-
+*/
       },
     },
   },
