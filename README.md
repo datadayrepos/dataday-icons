@@ -94,6 +94,9 @@ There are some principles here:
     - All names are CamelCase
     - All names end with 'Icon'
 
+### Adding Icons
+Add file as svg in the svg folder. Keep the naming pattern, descriptive, informative, and ends with "Icon"
+
 ### Tooling helpers
 There are several dev tools here.
 
@@ -112,7 +115,7 @@ pnpm build-icons
 # MANUALLY update package version before publishing
 pnpm pub
 
-# Commit to git manuallu or by uix
+# Commit to git manually or by uix
 git add .
 git commit -m "Added icons"
 git push
