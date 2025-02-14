@@ -1,9 +1,9 @@
 {
   "name": "@datadayrepos/icons",
   "type": "module",
-  "version": "0.0.1-beta.333",
+  "version": "0.0.1-beta.334",
   "private": false,
-  "packageManager": "pnpm@8.9.0",
+  "packageManager": "pnpm@10.4.0",
   "description": "Uix icon library",
   "author": "datadayrepos",
   "license": "Apache 2.0",
@@ -43,22 +43,19 @@
     "dedupeSvg": "node dev-dedupe.cjs"
   },
   "peerDependencies": {
-    "vue": "3.3.4"
+    "vue": "3.5.13"
   },
   "devDependencies": {
-    "@datadayrepos/eslint-config": "^1.0.1-beta.11",
-    "@datadayrepos/eslint-plugin-datadayrepos": "1.0.0-Beta12",
-    "@datadayrepos/ni": "^0.21.8",
-    "@types/node": "20.9.0",
-    "@types/rollup": "^0.54.0",
-    "@vitejs/plugin-vue": "4.4.1",
-    "eslint": "^8.51.0",
-    "eslint-plugin-sort-keys": "^2.3.5",
-    "lint-staged": "^14.0.1",
-    "pnpm": "^8.10.2",
+    "@antfu/eslint-config": "3.7.3",
+    "@datadayrepos/ni": "0.21.8",
+    "@types/node": "22.13.4",
+    "@vitejs/plugin-vue": "5.2.1",
+    "eslint": "9.20.1",
+    "eslint-plugin-sort-keys": "2.3.5",
+    "lint-staged": "14.0.1",
+    "pnpm": "10.4.0",
     "typescript": "5.2.2",
-    "vite": "4.5.0",
-    "vue": "3.3.4",
+    "vite": "5.1.4",
     "vue-tsc": "1.8.22"
   },
   "pnpm": {
