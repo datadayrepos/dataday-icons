@@ -1,7 +1,7 @@
 {
   "name": "@datadayrepos/icons",
   "type": "module",
-  "version": "0.0.1-beta.334",
+  "version": "0.0.1-beta.335",
   "private": false,
   "packageManager": "pnpm@10.4.0",
   "description": "Uix icon library",
