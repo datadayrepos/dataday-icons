@@ -19,8 +19,8 @@
       "require": "./dist/index.cjs"
     }
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "files": [
     "dist"
@@ -35,12 +35,15 @@
     "lint:fix": "eslint . --fix",
     "typecheckVue": "vue-tsc --noEmit",
     "typeBuildVue": "vue-tsc --declaration --emitDeclarationOnly",
-    "pub": "npm publish --access public",
+    "pub": "node scripts/npm-package.mjs publish --access=public",
     "convertVueSvg": "node dev-vuetosvg.cjs",
     "renameFolders": "node dev-renamefolder.cjs",
     "folderToSvg": "node dev-foldertosvg.cjs",
     "createView": "node dev-createView.cjs",
-    "dedupeSvg": "node dev-dedupe.cjs"
+    "dedupeSvg": "node dev-dedupe.cjs",
+    "prepack": "node scripts/npm-package.mjs guard",
+    "prepublishOnly": "node scripts/npm-package.mjs guard",
+    "pack:release": "node scripts/npm-package.mjs pack"
   },
   "peerDependencies": {
     "vue": "3.5.13"
