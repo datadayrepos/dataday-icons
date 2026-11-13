@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <!--ep:close
+  <!-- ep:close
 -->
   <svg
     xmlns="http://www.w3.org/2000/svg"

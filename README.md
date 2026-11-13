@@ -34,7 +34,7 @@ import IconClose from '@datadayrepos/icons/IconClose'
 ```
 
 ### Dynamic
-This supports async imports by variable names. 
+This supports async imports by variable names.
 Requires building a dedicated function to map a list of icon imports against variable keys.
 ```ts
 // iconresolver.ts
@@ -150,7 +150,7 @@ pnpm convertVueSvg
 ```
 
 Rename folders:
-For use when adding 'named' folders. 
+For use when adding 'named' folders.
 - Checks ad changes first character to CSP
 - Checks and sets last word to 'Icon'
 - IMPORTANT: Will change folder names in dev/folder
@@ -172,7 +172,4 @@ pnpm folderToSvg
 
 ## TODOs
 - small script for naming rules when importing files directly
-- 
-
-
-
+-

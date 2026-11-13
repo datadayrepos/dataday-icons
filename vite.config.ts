@@ -1,8 +1,7 @@
 import path from 'node:path'
-import fs from 'node:fs'
 
-import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import { defineConfig } from 'vite'
 
 // const vueDir = path.resolve(__dirname, 'src/vue') // Define the vueDir variable
 

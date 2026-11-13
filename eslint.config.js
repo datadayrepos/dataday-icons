@@ -1,5 +1,5 @@
 // @ts-check
-import datadayrepos from '@datadayrepos/eslint-config'
+import datadayrepos from '@antfu/eslint-config'
 import sortKeys from 'eslint-plugin-sort-keys'
 
 // Usage

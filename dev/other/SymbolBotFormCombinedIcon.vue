@@ -7,9 +7,11 @@
     </div>
   </div>
 </template>
+
 <script setup lang="ts">
-import { SymbolBotIcon, FormOutline } from "/@/modulesVue/useIcons/index";
+import { FormOutline, SymbolBotIcon } from '/@/modulesVue/useIcons/index'
 </script>
+
 <style scoped>
 .bgCol {
   background-color: var(--aby-bg-color-basecontrast);

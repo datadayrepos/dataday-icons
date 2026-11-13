@@ -82,7 +82,7 @@ function checkContent(name, bytes) {
   assert(!/^\s*\/\/[#@]\s*sourceMappingURL=|\/\*[#@]\s*sourceMappingURL=/m.test(text), `Source map reference in ${name}`)
   // PEM serializers contain public header constants; reject complete key material, not labels.
   const normalized = text.replace(/\\+(?:r\\+n|[rn])/g, '\n')
-  assert(!/-----BEGIN (?:[A-Z ]+ )?PRIVATE KEY-----\s*[A-Za-z0-9+/=\s]{64,}-----END (?:[A-Z ]+ )?PRIVATE KEY-----/.test(normalized) && !/\bnpm_[A-Za-z0-9]{30,}\b/.test(text), `Credential-shaped content in ${name}; content withheld.`)
+  assert(!/-----BEGIN (?:[A-Z ]+ )?PRIVATE KEY-----[A-Za-z0-9+/=\s]{64,}-----END (?:[A-Z ]+ )?PRIVATE KEY-----/.test(normalized) && !/\bnpm_[A-Za-z0-9]{30,}\b/.test(text), `Credential-shaped content in ${name}; content withheld.`)
 }
 
 function checkEntries(pkg, files) {
@@ -187,7 +187,7 @@ function build(pkg, out) {
   const buildScript = pkg.scripts?.['pack:build'] ? 'pack:build' : 'build'
   if (pkg.scripts?.build || pkg.scripts?.['pack:build']) {
     // Only generated dist output is cleaned; never remove tracked/source runtime files.
-    assert(roots.some(name => name === buildDirectory), 'The reviewed build output root is required.')
+    assert(roots.includes(buildDirectory), 'The reviewed build output root is required.')
     assert(!run('git', ['ls-files', '--', buildDirectory], root, true).trim(), 'Refusing to clean tracked dist files.')
     if (fs.existsSync(path.join(root, buildDirectory)))
       assert(!fs.lstatSync(path.join(root, buildDirectory)).isSymbolicLink(), 'Refusing to clean symlinked dist.')
@@ -200,7 +200,7 @@ function build(pkg, out) {
       const previous = process.env.PATH
       // Expose only pnpm shims; Corepack's npm shim rejects legacy npm substeps.
       const tools = fs.mkdtempSync(path.join(out, 'toolchain-'))
-      const quote = value => `'${value.replaceAll("'", "'\\''")}'`
+      const quote = value => `'${value.replaceAll('\'', '\'\\\'\'')}'`
       for (const command of ['pnpm', 'pnpx'])
         fs.writeFileSync(path.join(tools, command), `#!/bin/sh\nexec ${quote(executable)} ${command} "$@"\n`, { mode: 0o700 })
       process.env.PATH = `${tools}${path.delimiter}${previous || ''}`
