@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# check-private-updates-deploy: npm-patch-v1
 
 RELEASE_ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd -P)" || exit 1
 cd "$RELEASE_ROOT" || exit 1
@@ -18,6 +19,13 @@ release_require_main() {
 }
 
 set -euo pipefail
+
+DEPENDENCY_PATCH=0
+case "${JS_DEPLOY_MODE:-}" in
+  "") ;;
+  dependency-patch) DEPENDENCY_PATCH=1 ;;
+  *) printf 'ERROR: Unsupported JS_DEPLOY_MODE.\n' >&2; exit 2 ;;
+esac
 
 #   chmod +x shell/deploy.sh
 #   ./shell/deploy.sh
@@ -66,6 +74,10 @@ pause() {
 
 prompt_yn() {
   local q="${1:-Continue?}"
+  if [[ "$DEPENDENCY_PATCH" == 1 ]]; then
+    printf '%s [approved dependency-patch mode]\n' "$q"
+    return 0
+  fi
   local def="${2:-y}"
   local hint
   if [[ "$def" == "y" ]]; then hint="[Y/n]"; else hint="[y/N]"; fi
@@ -120,7 +132,12 @@ bump_version() {
   echo "  ${C_RED}M${C_RESET}) major"
   echo "  ${C_DIM}n${C_RESET}) no"
   while true; do
-    read -r -p "Choose [p/m/M/n] (default: n): " choice
+    if [[ "$DEPENDENCY_PATCH" == 1 ]]; then
+      choice=p
+      printf 'Dependency-update mode: patch selected.\n'
+    else
+      read -r -p "Choose [p/m/M/n] (default: n): " choice
+    fi
     choice="${choice:-n}"
     case "$choice" in
       p|m|M|n) break ;;
@@ -231,7 +248,12 @@ git_commit_push() {
     git add -A
   fi
 
-  if git diff --cached --quiet; then
+  local staged_status=0
+  git diff --cached --quiet || staged_status=$?
+  if [[ "$DEPENDENCY_PATCH" == 1 && "$staged_status" -gt 1 ]]; then
+    die "Cannot inspect staged changes; stopping."
+  fi
+  if [[ "$staged_status" == 0 ]]; then
     echo "${C_DIM}No staged changes to commit.${C_RESET}"
   else
     local version msg input
@@ -276,6 +298,9 @@ npm_publish() {
   local priv has_pub
   priv="$(pkg_field private)"
   has_pub="$(pkg_script_exists pub)"
+  if [[ "$DEPENDENCY_PATCH" == 1 && "$has_pub" != true ]]; then
+    die "Dependency-update mode requires the guarded pub script; no direct publication fallback."
+  fi
 
   if [[ "$priv" == "true" ]]; then
     die "package.json is private=true; refusing to publish"
@@ -306,7 +331,11 @@ npm_publish() {
 preflight() {
     release_require_main "$RELEASE_ROOT"
   BUMPED="0"
-  bump_version || true
+  if [[ "$DEPENDENCY_PATCH" == 1 ]]; then
+    bump_version
+  else
+    bump_version || true
+  fi
   maybe_build
 }
 
@@ -354,5 +383,19 @@ need_cmd node
 need_cmd git
 need_cmd npm
 need_cmd pnpm
+
+if [[ "$DEPENDENCY_PATCH" == 1 ]]; then
+  [[ $# == 0 && -t 0 && -t 1 ]] || die "Dependency-update mode requires an interactive terminal and no arguments."
+  release_require_main "$RELEASE_ROOT"
+  node --input-type=commonjs - "$PKG_JSON" <<'NODE'
+const p = JSON.parse(require('node:fs').readFileSync(process.argv[2], 'utf8'));
+if (Object.hasOwn(p, 'private') && typeof p.private !== 'boolean') throw new Error('private must be a JSON boolean.');
+if (p.private === true) throw new Error('Dependency-update mode cannot publish a private package.');
+if (typeof p.version !== 'string' || !/^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/.test(p.version)) throw new Error('Dependency-update mode requires a stable x.y.z version; use the manual flow otherwise.');
+for (const name of ['pack:release', 'pub']) if (typeof p.scripts?.[name] !== 'string' || !p.scripts[name].trim()) throw new Error('Missing guarded release script: ' + name);
+NODE
+  do_git_and_npm
+  exit 0
+fi
 
 main_menu
